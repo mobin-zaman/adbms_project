@@ -1,0 +1,78 @@
+insert into university(ID,NAME,ADDRESS) values(111,'AMERICAN INTERNATIONAL UNIVERSITY-BANGLADESH','Kuraitoli Road,Dhaka 1212') ;
+insert into university(ID,NAME,ADDRESS) values(222,'Independent University,Bangladesh','Bashundhara,Dhaka 1229,Bangladesh') ;
+insert into university(ID,NAME,ADDRESS) values(333,'North South University','Block B Kuril-NSU Rd,Dhaka 1229') ;
+insert into university(ID,NAME,ADDRESS) values(444,'DAFFODIL INTERNATIONAL UNIVERSITY','Sobhanbag,Mirpur Rd,Dhaka 1207') ;
+insert into university(ID,NAME,ADDRESS) values(555,'East West University ','A/2 Jahurul Islam Ave,Dhaka 1212') ;
+
+
+
+
+insert into department(id,dept_name,university_id) values(301,'CSE',111);
+insert into department(id,dept_name,university_id) values(302,'EEE',111);
+
+
+insert into department(id,dept_name,university_id) values(303,'CSE',222);
+insert into department(id,dept_name,university_id) values(304,'EEE',222);
+
+insert into department(id,dept_name,university_id) values(305,'CSE',333);
+insert into department(id,dept_name,university_id) values(306,'EEE',333);
+
+
+insert into department(id,dept_name,university_id) values(307,'CSE',444);
+insert into department(id,dept_name,university_id) values(308,'EEE',444);
+
+insert into department(id,dept_name,university_id) values(309,'CSE',555);
+insert into department(id,dept_name,university_id) values(310,'EEE',555);
+
+
+
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35065,'Sizan','sizan@gmail.com','01793862457',301,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35066,'Rezwan','rezwan@gmail.com','01521166553',301,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35067,'Mahtab','mahtab@gmail.com','01734562342',301,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35068,'Rahil','rahil@gmail.com','01976862342',301,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35070,'Mobin','mobin@gmail.com','01623338817',302,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35071,'Asif','asif@gmail.com','01733220099',302,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35072,'Nabil','nabil@gmail.com','01734562311',302,2016);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(30001,'Towsif','towsif@gmail.com','01734561232',303,2015);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(30012,'Niloy','niloy@gmail.com','01734565435',303,2018);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(40100,'Minar','minar@gmail.com','01734561232',307,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(40101,'Sajjad','sajjad@gmail.com','01734513232',307,2016);
+
+
+insert into technology(id,name,description) values(1,'Java','Java is a general-purpose programming language that is class-based, object-oriented, and designed to have as few implementation dependencies as possible.');
+insert into technology(id,name,description) values(2,'Python','Python is an interpreted, high-level, general-purpose programming language.');
+insert into technology(id,name,description) values(3,'JavaScript','JavaScript was developed by Brendan Eich in 1995, which appeared in Netscape, a popular browser of that time. The language was initially called LiveScript and was later renamed JavaScript.');
+insert into technology(id,name,description) values(4,'Php','PHP started out as a small open source project that evolved as more and more people found out how useful it was.');
+insert into technology(id,name,description) values(5,'C++','C++ is a cross-platformed language that can be used to create sophisticated high-performance applications.');
+
+
+
+insert into project(id,name,description) values(11,'Software Project 1','These phases are placed in context through a general introduction to software project management, ethics and software process maturity.In the project, students firstly produce a requirements document.');
+
+insert into project(id,name,description) values(22,'Software Project 2','After completion of software project 1 students will develop than project in software project 2');
+insert into project(id,name,description) values(33,'Android Task Monitoring','The developed project is a tasks reminder app, with AI-powered Chatbot that will make user enjoy productivity.This application helps you to make sure that the tasks you set actually get done, with the help of its AI assistant.');
+insert into project(id,name,description) values(44,'E Commerce for Online Medicine Shopping','All the stock of medicine is update automatically in the new system.Maintaining stock, Supplier information, Customer information & bill information are easy.');
+insert into project(id,name,description) values(55,'Canteen Food Ordering and Management System','In Online Food Ordering System Admin can handle the functionalities like add new food items, edit/delete food items, Enable/Disable the food items according to season and availability.');
+
+insert into faculty(id,name,email,phone,dept_id) values(11111,'Avijit Bhoumik','avijit@gmail.com','01655543234',301);
+insert into faculty(id,name,email,phone,dept_id) values(22222,'Tanvir Ahmed','tanvir@gmail.com','01612343234',302);
+insert into faculty(id,name,email,phone,dept_id) values(33333,'Navid Bin Anwar','navid@gmail.com','01789943234',303);
+insert into faculty(id,name,email,phone,dept_id) values(44444,'Zahid','zahid@gmail.com','01988543234',304);
+insert into faculty(id,name,email,phone,dept_id) values(55555,'Afroza Nahar','afroza@gmail.com','01933555433',305);
+
+
+insert into thesis(id,name,description) values(66,'Image Processing','In computer science, digital image processing is the use of computer algorithms to perform image processing on digital images.');
+insert into thesis(id,name,description) values(77,'Mobile Cloud Computing','Mobile Cloud Computing is the combination of cloud computing and mobile computing to bring rich computational resources to mobile users, network operators, as well as cloud computing providers.');
+insert into thesis(id,name,description) values(88,'Natural Language Processing','Natural language processing is a subfield of linguistics, computer science, information engineering, and artificial intelligence.');
+insert into thesis(id,name,description) values(99,'BIG DATA','"Big data" is a field that treats ways to analyze, systematically extract information from, or otherwise deal with data sets that are too large or complex to be dealt with by traditional data-processing application software.');
+insert into thesis(id,name,description) values(110,'Self-Switching Power Supply','A switched-mode power supply is an electronic circuit that converts power using switching devices that are turned on and off at high frequencies, and storage components such as inductors.');
+
+insert into competition(id,name,description,year) values(1,'DIU App Contest 2017','The contest will be held on May 19-20, 2017. This is 24 hours long App contest for the undergraduate students of different public & private universities of Bangladesh.',2017);
+
+insert into competition(id,name,description,year) values(2,'AIUB CS FEST','This is an event for both faculties and students of AIUB. Since its advent in 2012, CS Fest has been organized every year by AIUB Computer Club (ACC). It is one of the biggest events that ACC organizes every year.',2018);
+
+insert into competition(id,name,description,year) values(3,'ICPC','The contest represents the geographic area of Bangladesh. The contest is sponsored by -Bangladesh Computer Council(BCC), ICT Division, Bangladesh.',2018);
+
+insert into competition(id,name,description,year) values(4,'SUB ICPC','SUB Inter-University Programming Contest (IUPC) 2019. The State University of Bangladesh (SUB) hosted the BrainCraft Ltd.-SUB Inter-University Programming Contest (IUPC) 2019 on March 9, 2019 at its permanent campus at Kanchan, South Purbachal, Dhaka.',2018);
+
+insert into competition(id,name,description,year) values(5,'Battle of Brains','Battle Of Brains 2019. This is an individual programming contest among students of 1st and 2nd year of the University of Dhaka. There will be exciting prizes for the winners. Its mostly for the students of CSEDU.',2019);
