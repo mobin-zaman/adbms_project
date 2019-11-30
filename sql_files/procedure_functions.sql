@@ -10,6 +10,13 @@ EXCEPTION
     RETURN 0;
 END;
 
+     --id, name, email,phone,department_id
+select * from faculty;
+select * from project;
+
+CREATE OR REPLACE PROCEDURE insert_facutly(id_ in faculty.id%type, name_ in faculty.name%type, )
+
+
 
 declare
     admin_id number(10);

@@ -81,7 +81,7 @@ insert into thesis(name,description) values('BIG DATA','"Big data" is a field th
 insert into thesis(name,description) values('Self-Switching Power Supply','A switched-mode power supply is an electronic circuit that converts power using switching devices that are turned on and off at high frequencies, and storage components such as inductors.');
 
 select * from thesis; --thesis table done
-drop table university cascade constraints ;
+
 CREATE TABLE university(
         id NUMBER(10) NOT NULL,
         name VARCHAR2(100) NOT NULL,
@@ -108,9 +108,9 @@ insert into university(NAME,ADDRESS) values('North South University','Block B Ku
 insert into university(NAME,ADDRESS) values('DAFFODIL INTERNATIONAL UNIVERSITY','Sobhanbag,Mirpur Rd,Dhaka 1207') ;
 insert into university(NAME,ADDRESS) values('East West University ','A/2 Jahurul Islam Ave,Dhaka 1212') ;
 insert into university(NAME,ADDRESS) values('BUP ','DOHS ,Mirpur 12,Dhaka 1212') ;
+
 select * from university; --university table done
 
-drop table department cascade constraints ;
 CREATE TABLE department( id NUMBER(10) not null, dept_name VARCHAR2(100) NOT NULL,
         university_id NUMBER(10) not null,
         CONSTRAINT department_pk PRIMARY KEY(id),
@@ -131,7 +131,6 @@ CREATE OR REPLACE TRIGGER department --trigger 4
     BEGIN
         SELECT department_seq.nextval INTO :NEW.id FROM dual;
     end; --department trigger for auto increment
-select * from university;
 --start from here
 insert into department(dept_name,university_id) values('CSE',10);
 insert into department(dept_name,university_id) values('EEE',10);
@@ -145,11 +144,7 @@ insert into department(dept_name,university_id) values('CSE',50);
 insert into department(dept_name,university_id) values('EEE',50);
 
 select * from department;
-delete department where id=100;
-
-delete department where id=110;
 --department table done and working fine
-drop table faculty cascade constraints ;
 CREATE TABLE faculty (
         id NUMBER(10) NOT NULL,
         name VARCHAR2(100) NOT NULL,
@@ -159,16 +154,16 @@ CREATE TABLE faculty (
 
         CONSTRAINT faculty_pk PRIMARY KEY(id),
         CONSTRAINT fk_dept_faculty FOREIGN KEY (dept_id) REFERENCES department(id) );
+
 select * from department;
-insert into faculty(id,name,email,phone,dept_id) values(1,'Oshim Banerjee','oshim@gmail.com','01655543234',50);
-insert into faculty(id,name,email,phone,dept_id) values(2,'Tanvir Khan','tanvir@gmail.com','01612343234',20);
-insert into faculty(id,name,email,phone,dept_id) values(3,'Navid Bin Alam','navid@gmail.com','01789943234',30);
-insert into faculty(id,name,email,phone,dept_id) values(4,'Zahid','zahid@gmail.com','01988543234',40);
-insert into faculty(id,name,email,phone,dept_id) values(5,'Jesmin Nahar','jesmin@gmail.com','01933555433',70);
+insert into faculty(id,name,email,phone,dept_id) values(1,'Oshim Banerjee','oshim@gmail.com','01655543234',250);
+insert into faculty(id,name,email,phone,dept_id) values(2,'Tanvir Khan','tanvir@gmail.com','01612343234',220);
+insert into faculty(id,name,email,phone,dept_id) values(3,'Navid Bin Alam','navid@gmail.com','01789943234',230);
+insert into faculty(id,name,email,phone,dept_id) values(4,'Zahid','zahid@gmail.com','01988543234',240);
+insert into faculty(id,name,email,phone,dept_id) values(5,'Jesmin Nahar','jesmin@gmail.com','01933555433',270);
 
 select * from faculty;
 --faculty table done
-drop table student cascade constraints ;
 CREATE TABLE student (
         id NUMBER(10) NOT NULL,
         name VARCHAR2(100) NOT NULL,
@@ -180,23 +175,20 @@ CREATE TABLE student (
         CONSTRAINT fk_dept_student FOREIGN KEY (dept_id) REFERENCES department(id) );
 
 
-insert into student(id,name,email,phone,dept_id,admitted_year) values(35065,'Sizan','sizan@gmail.com','01793862457',20,2017);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(35066,'Rezwan','rezwan@gmail.com','01521166553',20,2017);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(35067,'Mahtab','mahtab@gmail.com','01734562342',30,2017);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(35068,'Rahil','rahil@gmail.com','01976862342',30,2017);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(35070,'Mobin','mobin@gmail.com','01623338817',40,2017);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(35071,'Asif','asif@gmail.com','01733220099',40,2017);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(35072,'Nabil','nabil@gmail.com','01734562311',50,2016);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(30001,'Towsif','towsif@gmail.com','01734561232',50,2015);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(30012,'Niloy','niloy@gmail.com','01734565435',60,2018);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(40100,'Minar','minar@gmail.com','01734561232',60,2017);
-insert into student(id,name,email,phone,dept_id,admitted_year) values(40101,'Sajjad','sajjad@gmail.com','01734513232',70,2016);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35065,'Sizan','sizan@gmail.com','01793862457',220,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35066,'Rezwan','rezwan@gmail.com','01521166553',220,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35067,'Mahtab','mahtab@gmail.com','01734562342',230,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35068,'Rahil','rahil@gmail.com','01976862342',230,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35070,'Mobin','mobin@gmail.com','01623338817',240,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35071,'Asif','asif@gmail.com','01733220099',240,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(35072,'Nabil','nabil@gmail.com','01734562311',250,2016);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(30001,'Towsif','towsif@gmail.com','01734561232',250,2015);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(30012,'Niloy','niloy@gmail.com','01734565435',260,2018);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(40100,'Minar','minar@gmail.com','01734561232',260,2017);
+insert into student(id,name,email,phone,dept_id,admitted_year) values(40101,'Sajjad','sajjad@gmail.com','01734513232',270,2016);
 
 select * from student;
 --student table done
-
-
-drop table technology cascade constraints ;
 
 CREATE TABLE technology (
    id NUMBER(10) NOT NULL,
@@ -213,7 +205,6 @@ insert into technology(id,name,description) values(3,'JavaScript','JavaScript wa
 insert into technology(id,name,description) values(4,'Php','PHP started out as a small open source project that evolved as more and more people found out how useful it was.');
 insert into technology(id,name,description) values(5,'C++','C++ is a cross-platformed language that can be used to create sophisticated high-performance applications.');
 
-drop table project_student cascade constraints ;
 CREATE TABLE project_student( --relationship table
         id NUMBER(10) NOT NULL,
         project_id NUMBER(10) NOT NULL,
@@ -222,10 +213,7 @@ CREATE TABLE project_student( --relationship table
         CONSTRAINT project_student_pk PRIMARY KEY(id),
         CONSTRAINT fk_project_student FOREIGN KEY (project_id) REFERENCES project(id),
         CONSTRAINT fk_student_project FOREIGN KEY (student_id) REFERENCES student(id) );
-select * from project;
-select * from project_student;
 
-select * from student;
 --………...Insert values of project_student………
 insert into project_student values(1,1,35065);
 insert into project_student values(2,1,35066);
@@ -239,7 +227,6 @@ insert into project_student values(9,5,30012);
 insert into project_student values(10,5,30001);
 
 
-drop table faculty_project;
 
 CREATE TABLE faculty_project (
         id NUMBER(10) NOT NULL,
@@ -250,10 +237,6 @@ CREATE TABLE faculty_project (
    CONSTRAINT fk_project_faculty FOREIGN KEY (project_id) REFERENCES project(id),
    CONSTRAINT fk_faculty_project FOREIGN KEY(faculty_id) REFERENCES faculty(id) );
 
-select *
-from faculty_project;
-select * from project;
-select * from faculty;
 --…….insert values fro faculty -project….
 Insert into faculty_project values(1,2,1);
 Insert into faculty_project values(2,1,2);
@@ -261,7 +244,6 @@ Insert into faculty_project values(3,3,4);
 Insert into faculty_project values(4,4,3);
 Insert into faculty_project values(5,5,5);
 
-drop table student_thesis cascade constraints ;
 
 CREATE TABLE student_thesis (
    id NUMBER(10) NOT NULL,
@@ -274,9 +256,6 @@ CREATE TABLE student_thesis (
    CONSTRAINT fk_student_thesis FOREIGN KEY(student_id) REFERENCES student(id)
 );
 --…..insert into student_thesis …………...
-select * from student_thesis;
-select * from thesis;
-select * from student;
 
 Insert into student_thesis values(1,1,30001);
 Insert into student_thesis values(2,1,35065);
@@ -290,7 +269,6 @@ Insert into student_thesis values(9,4,40100);
 Insert into student_thesis values(10,5,30012);
 Insert into student_thesis values(11,5,35070);
 
-drop table faculty_thesis;
 CREATE TABLE faculty_thesis (
    id NUMBER(10) NOT NULL,
    thesis_id NUMBER(10) NOT NULL,
@@ -301,17 +279,12 @@ CREATE TABLE faculty_thesis (
    CONSTRAINT fk_thesis_faculty FOREIGN KEY(thesis_id) REFERENCES thesis(id),
    CONSTRAINT fk_faculty_thesis FOREIGN KEY(faculty_id) REFERENCES faculty(id)
 );
-select * from faculty_thesis;
-select * from thesis;
 --……insert into faculty thesis………..
 Insert into faculty_thesis values(1,2,1);
 Insert into faculty_thesis values(2,1,2);
 Insert into faculty_thesis values(3,3,3);
 Insert into faculty_thesis values(4,4,5);
 Insert into faculty_thesis values(5,5,4);
-
-
-drop table technology_project cascade constraints ;
 
 
 CREATE TABLE technology_project (
@@ -324,8 +297,6 @@ CREATE TABLE technology_project (
    CONSTRAINT fk_project_technology FOREIGN KEY(project_id) REFERENCES project(id)
 );
 
-select * from technology_project;
-select * from technology;
 --…...insert into technology project………
 Insert into technology_project  values(1,1,1);
 Insert into technology_project  values(2,3,1);
@@ -334,7 +305,6 @@ Insert into technology_project  values(4,3,2);
 Insert into technology_project  values(5,1,3);
 Insert into technology_project  values(6,3,3);
 
-drop table technology_thesis cascade constraints ;
 CREATE TABLE technology_thesis (
    id NUMBER(10) NOT NULL,
    technology_id NUMBER(10) NOT NULL,
@@ -347,8 +317,6 @@ CREATE TABLE technology_thesis (
 
 
 --….insert into technology_thesis ……
-
-
 Insert into technology_thesis  values(1,1,1);
 Insert into technology_thesis  values(2,3,1);
 Insert into technology_thesis  values(3,1,2);
@@ -357,7 +325,6 @@ Insert into technology_thesis  values(5,1,3);
 Insert into technology_thesis  values(6,3,3);
 
 
-drop table competition cascade constraints ;
 
 CREATE TABLE competition (
    id NUMBER(10) NOT NULL,
@@ -375,7 +342,6 @@ insert into competition(id,name,description,year) values(3,'ICPC','The contest r
 insert into competition(id,name,description,year) values(4,'SUB ICPC','SUB Inter-University Programming Contest (IUPC) 2019. The State University of Bangladesh (SUB) hosted the BrainCraft Ltd.-SUB Inter-University Programming Contest (IUPC) 2019 on March 9, 2019 at its permanent campus at Kanchan, South Purbachal, Dhaka.',2018);
 insert into competition(id,name,description,year) values(5,'Battle of Brains','Battle Of Brains 2019. This is an individual programming contest among students of 1st and 2nd year of the University of Dhaka. There will be exciting prizes for the winners. Its mostly for the students of CSEDU.',2019);
 
-drop table competition_project cascade constraints ;
 
 CREATE TABLE competition_project (
    id NUMBER(10) NOT NULL,
@@ -398,7 +364,6 @@ Insert into competition_project  values(4,3,2);
 Insert into competition_project  values(5,4,3);
 Insert into competition_project  values(6,4,3);
 
-drop table competition_thesis cascade constraints ;
 
 CREATE TABLE competition_thesis (
    id NUMBER(10) NOT NULL,
@@ -418,7 +383,3 @@ Insert into competition_thesis  values(4,3,2);
 Insert into competition_thesis  values(5,4,3);
 Insert into competition_thesis  values(6,4,3);
 
-
-
-select * from student;
-select * from faculty;
