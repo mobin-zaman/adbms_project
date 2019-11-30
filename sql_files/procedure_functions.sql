@@ -9,14 +9,16 @@ EXCEPTION
     WHEN no_data_found THEN  --exception handling, bonus marks
     RETURN 0;
 END;
+--CREATE OR REPLACE PROCEDURE insert_facutly(id_ in faculty.id%type, name_ in faculty.name%type, phone_ in faculty.phone%type,department_id_  in faculty.department%type)
 
-     --id, name, email,phone,department_id
-select * from faculty;
-select * from project;
+select FACULTY.id, FACULTY.name, FACULTY.email, FACULTY.phone , DEPARTMENT.DEPT_NAME, UNIVERSITY.NAME from FACULTY , DEPARTMENT, UNIVERSITY where DEPARTMENT.id = FACULTY.DEPT_ID  and DEPARTMENT.UNIVERSITY_ID=university.id;
 
-CREATE OR REPLACE PROCEDURE insert_facutly(id_ in faculty.id%type, name_ in faculty.name%type, )
+CREATE OR REPLACE VIEW facutly_information_view AS
+    select FACULTY.id, FACULTY.name, FACULTY.email, FACULTY.phone , DEPARTMENT.DEPT_NAME, UNIVERSITY.NAME as univerity_name
+    from FACULTY , DEPARTMENT, UNIVERSITY
+    where DEPARTMENT.id = FACULTY.DEPT_ID  and DEPARTMENT.UNIVERSITY_ID=UNIVERSITY.id;
 
-
+select * from facutly_information_view;
 
 declare
     admin_id number(10);
