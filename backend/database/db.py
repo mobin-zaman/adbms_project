@@ -13,17 +13,19 @@ def select_query(sql):
         result = cursor.execute(sql)
     return result;
 
+
 def select_many_query(sql):
     conn = get_connection()
+
     with conn.cursor() as cursor:
         cursor.execute(sql)
         meta = cursor.description
-        rows=cursor.fetchmany()
-
+        rows = cursor.fetchmany()
 
         print(meta)
         print(rows)
 
+    return rows
 
 # result=c.execute("")
 
