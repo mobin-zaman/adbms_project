@@ -6,6 +6,7 @@ show particular teacher
 """
 
 from flask_restful import Resource
+from .util import get_json_dict
 from database.db import select_many_query
 import json
 
@@ -13,7 +14,6 @@ import json
 class FacultyListResource(Resource):
 
     def get(self):
-        sql = "select * from faculty_information_view"  # FIXME: give order by in the faculty_information_view
-        result_data = select_many_query(sql)
 
-        result_dict = {"coloumn_names"};
+        json_dict = get_json_dict("SELECT * FROM FACULTY_INFORMATION_VIEW")
+        return {"response": json_dict}, 200
