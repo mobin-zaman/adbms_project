@@ -20,20 +20,18 @@ def select_many_query(sql):
     with conn.cursor() as cursor:
         cursor.execute(sql)
         meta = cursor.description
-        rows = cursor.fetchmany()
+        rows = cursor.fetchmany()  # rows already has the meta
 
-        print(meta)
-        print(rows)
+    return meta, rows
 
-    return rows
+    # result=c.execute("")
 
-# result=c.execute("")
+    # print('c',result)
+    # row=list()
+    # for r in c:
+    # 	print(r)
+    # 	row.append(r)
 
-# print('c',result)
-# row=list()
-# for r in c:
-# 	print(r)
-# 	row.append(r)
 
 def function_call(params_list):
     conn = get_connection()
