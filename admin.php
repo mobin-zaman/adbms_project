@@ -1,20 +1,15 @@
-<?php
+<php
 
 if($_SERVER["REQUEST_METHOD"] == "POST"){
+	if(!empty($_POST['u_name'])){
+		$uName = mysqli_real_escape_string($conn, $_POST['u_name']);
+	}
+	if(!empty($_POST['u_pass'])){
+		$uPass = mysqli_real_escape_string($conn, $_POST['u_pass']);
+	}
 
-	function switchVisible() {
-    if (document.getElementById('Div1') !== undefined) {
-
-        if (document.getElementById('Div1').style.display == 'block') {
-            document.getElementById('Div1').style.display = 'none';
-            document.getElementById('Div2').style.display = 'block';
-        } else {
-            document.getElementById('Div1').style.display = 'block';
-            document.getElementById('Div2').style.display = 'none';
-        }
-    }
+	
 }
-
 ?>
 <!DOCTYPE html>
 <html>
@@ -57,9 +52,9 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
 </head>
 <body>
  <form action=<?php echo htmlspecialchars($_SERVER['PHP_SELF']) ?> method="POST">
-<div did="1" align="center">
+<div align="center">
 	<h1 >Admin Panel</h1>
-	<button type="Submit" id="fid" >Faculty</button>
+	<button type="Submit" id="fid">Faculty</button>
 	<br>
 	<button type="Submit" id="sid">Student</button>
     <br>
@@ -68,15 +63,7 @@ if($_SERVER["REQUEST_METHOD"] == "POST"){
     <button type="Submit" id="tid">Thesis</button>
     <br>
 </div>
-<div  did="2" style="margin-top:50px;">
-    <button type="Submit" id="fid">INSERT</button>
-    <br>
-    <button type="Submit" id="sid">LIST</button>
-    <br>
-    <button type="Submit" id="pid">UPDATE</button>
-    <br>
-</div>
-
 </form>
+
 </body>
 </html>
