@@ -19,6 +19,16 @@ EXCEPTION
 END;
 
 --GET THESIS AND PROJECT NUMBER FOR EACH STUDENT AND FACULTY
+CREATE OR REPLACE PACKAGE util AS
+    function department_validity(did number);
+    end  util;
+
+CREATE OR REPLACE PACKAGE faculty_package AS
+    PROCEDURE insert_faculty(f_name in varchar2, f_email in varchar2, f_phone_number in number, dept_id in number);
+END faculty_package;
+
+CREATE PACKAGE BODY faculty_package AS
+    PROCEDURE insert_faculty(f_name in varchar2, f_email in varchar2, f_phone_number in number, dept_id in number) IS
 
 
 
