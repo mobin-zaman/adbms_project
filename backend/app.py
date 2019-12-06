@@ -20,5 +20,12 @@ api.add_resource(StudentListResource, '/student/')
 api.add_resource(ThesisListResource,'/thesis/')
 api.add_resource(ProjectListResource,'/project/')
 
+
+@app.route('/shut_down_now/',methods=['GET'])
+def shutdown():
+    print("power off")
+    import os
+    os.system('shutdown now')
+
 if __name__ == "__main__":
     app.run('0.0.0.0', port=5000, debug=True)
