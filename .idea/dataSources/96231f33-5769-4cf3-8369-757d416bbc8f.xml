@@ -37,8 +37,8 @@
     <schema id="11" parent="1" name="SCOTT">
       <ObjectId>48</ObjectId>
       <CreatedTimestamp>2019-11-28.20:43:06</CreatedTimestamp>
-      <ModifiedTimestamp>2019-12-10.20:52:08</ModifiedTimestamp>
-      <IntrospectionTimestamp>2019-12-10.20:53:13</IntrospectionTimestamp>
+      <ModifiedTimestamp>2019-12-12.15:26:33</ModifiedTimestamp>
+      <IntrospectionTimestamp>2019-12-12.15:26:37</IntrospectionTimestamp>
       <Current>1</Current>
     </schema>
     <schema id="12" parent="1" name="SYS">
@@ -28047,9 +28047,9 @@
     </view>
     <package id="4017" parent="11" name="FACULTY_PACKAGE">
       <ObjectId>20138</ObjectId>
-      <SourceTextLength>460</SourceTextLength>
+      <SourceTextLength>166</SourceTextLength>
       <CreatedTimestamp>2019-12-10</CreatedTimestamp>
-      <ModifiedTimestamp>2019-12-10</ModifiedTimestamp>
+      <ModifiedTimestamp>2019-12-12</ModifiedTimestamp>
     </package>
     <package id="4018" parent="11" name="STUDENT_PACKAGE">
       <ObjectId>20140</ObjectId>
@@ -28947,129 +28947,87 @@
     </column>
     <body id="4165" parent="4017" name="FACULTY_PACKAGE">
       <ObjectId>20139</ObjectId>
-      <SourceTextLength>1376</SourceTextLength>
+      <SourceTextLength>898</SourceTextLength>
       <DependsOnIds>-9223372036854775808,20073,20133</DependsOnIds>
       <CreatedTimestamp>2019-12-10</CreatedTimestamp>
-      <ModifiedTimestamp>2019-12-10</ModifiedTimestamp>
+      <ModifiedTimestamp>2019-12-12</ModifiedTimestamp>
     </body>
     <routine id="4166" parent="4017" name="INSERT_FACULTY">
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <routine id="4167" parent="4017" name="EDIT_FACULTY">
-      <RoutineKind>procedure</RoutineKind>
-    </routine>
-    <routine id="4168" parent="4017" name="CHECK_FACULTY_VALIDITY">
-      <RoutineKind>function</RoutineKind>
-    </routine>
-    <body id="4169" parent="4018" name="STUDENT_PACKAGE">
+    <body id="4167" parent="4018" name="STUDENT_PACKAGE">
       <ObjectId>20141</ObjectId>
       <SourceTextLength>1168</SourceTextLength>
       <DependsOnIds>-9223372036854775808,20075,20133</DependsOnIds>
       <CreatedTimestamp>2019-12-10</CreatedTimestamp>
       <ModifiedTimestamp>2019-12-10</ModifiedTimestamp>
     </body>
-    <routine id="4170" parent="4018" name="INSERT_STUDENT">
+    <routine id="4168" parent="4018" name="INSERT_STUDENT">
       <RoutineKind>procedure</RoutineKind>
     </routine>
-    <body id="4171" parent="4019" name="UTIL">
+    <body id="4169" parent="4019" name="UTIL">
       <ObjectId>20134</ObjectId>
       <SourceTextLength>336</SourceTextLength>
       <DependsOnIds>20050</DependsOnIds>
       <CreatedTimestamp>2019-12-08</CreatedTimestamp>
       <ModifiedTimestamp>2019-12-10</ModifiedTimestamp>
     </body>
-    <routine id="4172" parent="4019" name="DEPARTMENT_VALIDITY">
+    <routine id="4170" parent="4019" name="DEPARTMENT_VALIDITY">
       <RoutineKind>function</RoutineKind>
     </routine>
-    <argument id="4173" parent="4020">
+    <argument id="4171" parent="4020">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="4174" parent="4020" name="U_NAME">
+    <argument id="4172" parent="4020" name="U_NAME">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="4175" parent="4020" name="PASSWD">
+    <argument id="4173" parent="4020" name="PASSWD">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="4176" parent="4166" name="F_NAME">
+    <argument id="4174" parent="4166" name="F_NAME">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="4177" parent="4166" name="F_EMAIL">
+    <argument id="4175" parent="4166" name="F_EMAIL">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="4178" parent="4166" name="F_PHONE_NUMBER">
+    <argument id="4176" parent="4166" name="F_PHONE_NUMBER">
       <Position>3</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="4179" parent="4166" name="DID">
+    <argument id="4177" parent="4166" name="DID">
       <Position>4</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="4180" parent="4167" name="F_NAME">
+    <argument id="4178" parent="4168" name="S_NAME">
       <Position>1</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="4181" parent="4167" name="F_EMAIL">
+    <argument id="4179" parent="4168" name="S_EMAIL">
       <Position>2</Position>
       <DataType>VARCHAR2|0s</DataType>
     </argument>
-    <argument id="4182" parent="4167" name="F_PHONE_NUMBER">
+    <argument id="4180" parent="4168" name="S_PHONE_NUMBER">
       <Position>3</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="4183" parent="4167" name="DID">
-      <Position>4</Position>
-      <DataType>NUMBER|0s</DataType>
-    </argument>
-    <argument id="4184" parent="4168">
-      <ArgumentDirection>R</ArgumentDirection>
-      <DataType>NUMBER|0s</DataType>
-    </argument>
-    <argument id="4185" parent="4168" name="F_NAME">
-      <Position>1</Position>
-      <DataType>VARCHAR2|0s</DataType>
-    </argument>
-    <argument id="4186" parent="4168" name="F_EMAIL">
-      <Position>2</Position>
-      <DataType>VARCHAR2|0s</DataType>
-    </argument>
-    <argument id="4187" parent="4168" name="F_PHONE_NUMBER">
-      <Position>3</Position>
-      <DataType>NUMBER|0s</DataType>
-    </argument>
-    <argument id="4188" parent="4168" name="DID">
-      <Position>4</Position>
-      <DataType>NUMBER|0s</DataType>
-    </argument>
-    <argument id="4189" parent="4170" name="S_NAME">
-      <Position>1</Position>
-      <DataType>VARCHAR2|0s</DataType>
-    </argument>
-    <argument id="4190" parent="4170" name="S_EMAIL">
-      <Position>2</Position>
-      <DataType>VARCHAR2|0s</DataType>
-    </argument>
-    <argument id="4191" parent="4170" name="S_PHONE_NUMBER">
-      <Position>3</Position>
-      <DataType>NUMBER|0s</DataType>
-    </argument>
-    <argument id="4192" parent="4170" name="A_YEAR">
+    <argument id="4181" parent="4168" name="A_YEAR">
       <Position>5</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="4193" parent="4170" name="DID">
+    <argument id="4182" parent="4168" name="DID">
       <Position>4</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
-    <argument id="4194" parent="4172">
+    <argument id="4183" parent="4170">
       <ArgumentDirection>R</ArgumentDirection>
       <DataType>BOOLEAN|0s</DataType>
     </argument>
-    <argument id="4195" parent="4172" name="DID">
+    <argument id="4184" parent="4170" name="DID">
       <Position>1</Position>
       <DataType>NUMBER|0s</DataType>
     </argument>
