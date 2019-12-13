@@ -10,14 +10,15 @@ from flask import request  # needed for parsing POST requests
 from .util import get_json_dict
 from database.db import insert_faculty_procedure
 from database.db import search_faculty
+from database.db import select_many_query
 import json
 
 
 class FacultyListResource(Resource):
 
     def get(self):
-        json_dict = get_json_dict("SELECT * FROM FACULTY_INFORMATION_VIEW")
-        return {"response": json_dict}, 200
+        result = select_many_query("select * from FACULTY_INFORMATION_VIEW")
+        return {"response": result}, 200
 
 
 class FacultyInsertResource(Resource):

@@ -69,11 +69,11 @@ def select_many_query(sql):
     conn = get_connection()
 
     with conn.cursor() as cursor:
-        cursor.execute(sql)
-        meta = cursor.description
-        rows = cursor.fetchmany()  # rows already has the meta
 
-    return meta, rows
+        result = cursor.execute(sql)
+        result = dict_mapper(cursor)
+
+    return result
 
     # result=c.execute("")
 

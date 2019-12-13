@@ -7,5 +7,5 @@ from pprint import pprint
 
 class StudentListResource(Resource):
     def get(self):
-        json_dict = get_json_dict("SELECT * FROM STUDENT_INFORMATION_VIEW")
-        return {"response": json_dict}, 200
+        result = select_many_query("select * from FACULTY_INFORMATION_VIEW")
+        return {"response": result}, 200

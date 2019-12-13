@@ -1,7 +1,8 @@
 from flask_restful import Resource
-from .util import get_json_dict
+from database.db import select_many_query
 
 
 class ProjectListResource(Resource):
     def get(self):
-        return {"response": get_json_dict("select * from PROJECT_INFORMATION_VIEW")}, 200
+        result = select_many_query("select * from PROJECT_INFORMATION_VIEW")
+        return {'response':result}, 200
