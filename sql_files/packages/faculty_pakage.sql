@@ -1,6 +1,6 @@
 CREATE OR REPLACE PACKAGE faculty_package AS
-    PROCEDURE insert_faculty(f_name in varchar2, f_email in varchar2, f_phone_number in number, did in number);
-    PROCEDURE update_faculty(f_id in number, f_name in varchar2, f_email in varchar2, f_phone_number in number, did in number);
+    PROCEDURE insert_faculty(f_id in number, f_name in varchar2, f_email in varchar2, f_phone_number in varchar, did in number);
+    PROCEDURE update_faculty(f_id in number, f_name in varchar2, f_email in varchar2, f_phone_number in varchar, did in number);
 END faculty_package;
 
 
@@ -10,10 +10,10 @@ CREATE OR REPLACE PACKAGE BODY faculty_package AS
         faculty_id number(10);
     BEGIN
         select id into faculty_id from FACULTY where email = f_email;
-        return true;
+        return false;
     EXCEPTION
         WHEN no_data_found THEN
-            return false;
+            return true;
 
     End;
 
@@ -29,7 +29,7 @@ CREATE OR REPLACE PACKAGE BODY faculty_package AS
     END;
 
 
-    PROCEDURE insert_faculty(f_name in varchar2, f_email in varchar2, f_phone_number in number, did in number) AS
+    PROCEDURE insert_faculty(f_id in number, f_name in varchar2, f_email in varchar2, f_phone_number in varchar, did in number) AS
     BEGIN
         if not (util.department_validity(did)) then
             raise_application_error(-20001, 'department id invalid');
@@ -40,11 +40,11 @@ CREATE OR REPLACE PACKAGE BODY faculty_package AS
 
             end if;
 
-        insert into faculty(name, email, phone, dept_id) values (f_name, f_email, f_phone_number, did);
+        insert into faculty values (f_id ,f_name, f_email, f_phone_number, did);
 
     end;
 
-    PROCEDURE update_faculty(f_id in number, f_name in varchar2, f_email in varchar2, f_phone_number in number,
+    PROCEDURE update_faculty(f_id in number, f_name in varchar2, f_email in varchar2, f_phone_number in varchar,
                              did in number) AS
     BEGIN
         if not (util.DEPARTMENT_VALIDITY(did)) then

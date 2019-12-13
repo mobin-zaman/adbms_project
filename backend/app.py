@@ -4,7 +4,7 @@ from flask_cors import CORS
 from flask_restful import Api
 
 from resources.login import LoginResource
-from resources.faculty import FacultyListResource, FacultyInsertResource
+from resources.faculty import FacultyListResource, FacultyInsertResource, FacultySearchByName
 from resources.student import StudentListResource
 from resources.project import ProjectListResource
 from resources.thesis import ThesisListResource
@@ -17,6 +17,8 @@ api = Api(app)
 api.add_resource(LoginResource, '/login/')
 api.add_resource(FacultyListResource, '/faculty/')
 api.add_resource(FacultyInsertResource,'/faculty/insert/')
+
+api.add_resource(FacultySearchByName,'/faculty/search/<string:name>/')
 api.add_resource(StudentListResource, '/student/')
 api.add_resource(ThesisListResource,'/thesis/')
 api.add_resource(ProjectListResource,'/project/')
