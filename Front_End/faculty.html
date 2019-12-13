@@ -1,36 +1,37 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Faculty</title>
+    <title>Faculty</title>
 
- <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
     <style>
-      body {
-        font-family: Arial, Helvetica, sans-serif;
-      }
-      form {
-        border: 3px solid #f1f1f1;
-      }
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
 
-     
-      button {
-        background-color: #4caf50;
-        color: white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 50%;
-      }
+        form {
+            border: 3px solid #f1f1f1;
+        }
 
-      button:hover {
-        opacity: 0.8;
-      }
-</style>  
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 50%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+    </style>
 </head>
 <body>
- 
-<div align="center" >
+
+<div align="center">
     <button type="Submit" id="insertbtn" name="insertbtn">INSERT</button>
     <br>
     <button type="Submit" id="listbtn">LIST</button>
@@ -39,67 +40,107 @@
     <br>
 </div>
 
-<div id="output" style="margin-top:50px;" > 
+<div id="output" style="margin-top:50px;">
 
-<table id ='tableid', border = 1>
+    <table id='tableId' , border=1>
 
 
+    </table>
 
-</table>
-  
 </div>
 
 <script>
-    document.getElementById('listbtn').addEventListener('click',list);
+    document.getElementById('listbtn').addEventListener('click', list);
 
 
-     
+    function list() {
+        const url = "https://ugly-cobra-39.telebit.io/faculty/";
+        const header = {
+            Accept: 'application/json'
+        };
 
-    function list(){
+        let fetchData = {
+            method: 'GET',
+            headers: header
+        };
 
-      const url ="https://ugly-cobra-39.telebit.io/faculty/"
-          const header = {
-        Accept: 'application/json',
-       
-      };
-    
-      let fetchData = {
-        method: 'GET',
-        headers: header
-      };
+        fetch(url, fetchData).then(response => {
+            return response.json()
+        }).then(data => {
+            let response = data.response;
+            console.log(response)
 
-       var faculty='';
-      fetch(url, fetchData)
-      .then((response)=>{return response.json()})
-      .then(data => {
-         let table = document.getElementById('tableid');
-         let row = table.insertRow(0);
-       
-        column_values= data.response.column_names;
+            let tBodyHtml = `
+                <th>
+                <td>Id</td>
+                <td>Name</td>
+                <td>University</td>
+                <td>Department</td>
+                <td>Email</td>
+                <td>Phone</td>
+                </th>
+            `;
+            response.forEach(data => {
+                tBodyHtml += `
+                     <tr>
+                       <td>${data.ID}</td>
+                       <td>${data.NAME}</td>
+                       <td>${data.UNIVERITY_NAME}+</td>
+                       <td>${data.DEPT_NAME}_</td>
+                       <td>${data.EMAIL}</td>
+                       <td>${data.PHONE}</td>
+                     </tr>
+                    `
 
-        fields = data.response.fields;  
-        for ( i =column_values.length-1; i>=0; i--){
-          faculty = '<th> '+column_values[i]+'</th>';
-          let cell = row.insertCell(0);
-          cell.innerHTML = faculty;
-          // cell.innerHTML=faculty;
-        }
-
-        for ( i = 0; i<fields.length;i++){
-            let row = table.insertRow(i+1);
-
-            for( j=fields[i].length -1 ; j>=0 ;j){
-              let cell = row.insertCell(0);
-
-              faculty = '<td>' + fields[i][j] + '</td>';
-
-              cell.innerHTML= faculty;
-            }
-        }
-
-
-      });
+            });
+            document.querySelector('#tableId').innerHTML = tBodyHtml;
+        });
     }
+
+    // function list(){
+    //
+    //   const url ="https://ugly-cobra-39.telebit.io/faculty/"
+    //       const header = {
+    //     Accept: 'application/json',
+    //   };
+    //
+    //   let fetchData = {
+    //     method: 'GET',
+    //     headers: header
+    //   };
+    //
+    //    var faculty='';
+    //   fetch(url, fetchData)
+    //   .then((response)=>{return response.json()})
+    //   .then(data => {
+    //      let table = document.getElementById('tableid');
+    //      let row = table.insertRow(0);
+    //
+    //     column_values= data.response.column_names;
+    //
+    //     fields = data.response.fields;
+    //     for ( i =column_values.length-1; i>=0; i--){
+    //       faculty = '<th> '+column_values[i]+'</th>';
+    //       let cell = row.insertCell(0);
+    //       cell.innerHTML = faculty;
+    //       // cell.innerHTML=faculty;
+    //     }
+    //
+    //     for ( i = 0; i<fields.length;i++){
+    //         let row = table.insertRow(i+1);
+    //
+    //         for( j=fields[i].length -1 ; j>=0 ;j){
+    //           let cell = row.insertCell(0);
+    //
+    //           faculty = '<td>' + fields[i][j] + '</td>';
+    //
+    //           cell.innerHTML= faculty;
+    //         }
+    //     }
+    //
+    //
+    //   });
+    // }
 </script>
 </body>
 </html>
