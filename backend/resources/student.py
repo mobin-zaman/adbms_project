@@ -1,13 +1,13 @@
 import json
 from flask_restful import Resource
-from database.db import select_many_query
+from database.db import select_query
 from database.student_methods import *
 from flask import request
 
 
 class StudentListResource(Resource):
     def get(self):
-        result = select_many_query("select * from STUDENT_INFORMATION_VIEW")
+        result = select_query("select * from STUDENT_INFORMATION_VIEW")
         return {"response": result}, 200
 
 

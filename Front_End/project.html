@@ -26,6 +26,71 @@
       button:hover {
         opacity: 0.8;
       }
+
+          table.myTable {
+        border: 1px solid #1c6ea4;
+        background-color: #eeeeee;
+        width: 100%;
+        text-align: left;
+        border-collapse: collapse;
+      }
+      table.myTable td,
+      table.myTable th {
+        border: 1px solid #aaaaaa;
+        padding: 3px 2px;
+      }
+      table.myTable tbody td {
+        font-size: 13px;
+      }
+      table.myTable tr:nth-child(even) {
+        background: #d0e4f5;
+      }
+      table.myTable thead {
+        background: #0a3d62;
+        background: -moz-linear-gradient(
+          top,
+          #476d89 0%,
+          #225071 66%,
+          #0a3d62 100%
+        );
+        background: -webkit-linear-gradient(
+          top,
+          #476d89 0%,
+          #225071 66%,
+          #0a3d62 100%
+        );
+        background: linear-gradient(
+          to bottom,
+          #476d89 0%,
+          #225071 66%,
+          #0a3d62 100%
+        );
+        border-bottom: 1px solid #444444;
+      }
+      table.myTable thead th {
+        font-size: 15px;
+        font-weight: bold;
+        color: #ffffff;
+        text-align: center;
+        border-left: 1px solid #d0e4f5;
+      }
+      table.myTable thead th:first-child {
+        border-left: none;
+      }
+
+      table.myTable tfoot td {
+        font-size: 14px;
+      }
+      table.myTable tfoot .links {
+        text-align: right;
+      }
+      table.myTable tfoot .links a {
+        display: inline-block;
+        background: #1c6ea4;
+        color: #ffffff;
+        padding: 2px 8px;
+        border-radius: 5px;
+      }
 </style>  
 </head>
 <body>
@@ -41,7 +106,7 @@
 
 <div id="output" style="margin-top:50px;" > 
 
-<table id ='tableid', border = 1>
+<table id ='tableId' class="myTable">
 
 
 
@@ -55,51 +120,47 @@
 
      
 
-    function list(){
+    function list() {
+        const url = "https://ugly-cobra-39.telebit.io/project/"; //FIXME: change the url to localhost
+        const header = {
+            Accept: 'application/json'
+        };
 
-      const url ="https://ugly-cobra-39.telebit.io/project/"
-          const header = {
-        Accept: 'application/json',
-       
-      };
-    
-      let fetchData = {
-        method: 'GET',
-        headers: header
-      };
+        let fetchData = {
+            method: 'GET',
+            headers: header
+        };
 
-       var project='';
-      fetch(url, fetchData)
-      .then((response)=>{return response.json()})
-      .then(data => {
-         let table = document.getElementById('tableid');
-         let row = table.insertRow(0);
-       
-        column_values= data.response.column_names;
+        fetch(url, fetchData).then(response => {
+            return response.json()
+        }).then(data => {
+            let response = data.response;
+            console.log(response);
 
-        fields = data.response.fields;  
-        for ( i =column_values.length-1; i>=0; i--){
-          project = '<th> '+column_values[i]+'</th>';
-          let cell = row.insertCell(0);
-          cell.innerHTML = project;
-          // cell.innerHTML=faculty;
-        }
+            let tBodyHtml = `
+                <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Supervisor</th>
+                </tr>
+            `;
 
-        for ( i = 0; i<fields.length;i++){
-            let row = table.insertRow(i+1);
+            response.forEach(data => {
+                tBodyHtml += `
+                     <tr>
+                       <td>${data.ID}</td>
+                       <td>${data.NAME}</td>
+                       <td>${data.DESCRIPTION}</td>
+                       <td>${data.FACULTY_NAME}</td>
+                     </tr>
+                    `
 
-            for( j=fields[i].length -1 ; j>=0 ;j){
-              let cell = row.insertCell(0);
-
-              project = '<td>' + fields[i][j] + '</td>';
-
-              cell.innerHTML= project;
-            }
-        }
-
-
-      });
+            });
+            document.querySelector('#tableId').innerHTML = tBodyHtml;
+        });
     }
+
 </script>
 </body>
 </html>

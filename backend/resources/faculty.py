@@ -8,14 +8,14 @@ show particular teacher
 from flask_restful import Resource
 from flask import request  # needed for parsing POST requests
 from database.faculty_methods import insert_faculty_procedure, search_faculty
-from database.db import select_many_query
+from database.db import select_query
 import json
 
 
 class FacultyListResource(Resource):
 
     def get(self):
-        result = select_many_query("select * from FACULTY_INFORMATION_VIEW")
+        result = select_query("select * from FACULTY_INFORMATION_VIEW")
         return {"response": result}, 200
 
 
@@ -30,7 +30,7 @@ class FacultyInsertResource(Resource):
             email = json_data['email']
             phone_number = json_data['phone_number']
             dept_id = json_data['dept_id']
-        except(Exception):
+        except Exception:
             return {'error': 'need all the data'}, 200
 
         status = insert_faculty_procedure(id, name, email, phone_number, dept_id)

@@ -50,7 +50,7 @@ def select_query(sql):
         result = dict_mapper(cursor)
     return result
 
-
+"""
 def select_many_query(sql):
     conn = get_connection()
 
@@ -61,6 +61,7 @@ def select_many_query(sql):
 
     return result
 
+"""
 
 def error_message(message):
     return message.split("\n")[0].split(":")[1]
