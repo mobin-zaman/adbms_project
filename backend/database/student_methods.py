@@ -21,6 +21,6 @@ def search_student(name):
 
     with conn.cursor() as cursor:
         cursor.execute('select * from student where upper(name) like upper(:name)', {
-            'name': '%' + name + '%'})  # needed for capitalizing names, or else search doesn't weork
+            'name': '%' + name + '%'})  # needed for capitalizing names, or else search doesn't work
         result = dict_mapper(cursor)
         return result

@@ -54,7 +54,7 @@
 
 
     function list() {
-        const url = "https://ugly-cobra-39.telebit.io/faculty/";
+        const url = "https://ugly-cobra-39.telebit.io/faculty/"; //FIXME: change the url to localhost
         const header = {
             Accept: 'application/json'
         };
@@ -68,25 +68,26 @@
             return response.json()
         }).then(data => {
             let response = data.response;
-            console.log(response)
+            console.log(response);
 
             let tBodyHtml = `
-                <th>
-                <td>Id</td>
-                <td>Name</td>
-                <td>University</td>
-                <td>Department</td>
-                <td>Email</td>
-                <td>Phone</td>
-                </th>
+                <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>University</th>
+                <th>Department</th>
+                <th>Email</th>
+                <th>Phone</th>
+                </tr>
             `;
+
             response.forEach(data => {
                 tBodyHtml += `
                      <tr>
                        <td>${data.ID}</td>
                        <td>${data.NAME}</td>
-                       <td>${data.UNIVERITY_NAME}+</td>
-                       <td>${data.DEPT_NAME}_</td>
+                       <td>${data.UNIVERITY_NAME}</td>
+                       <td>${data.DEPT_NAME}</td>
                        <td>${data.EMAIL}</td>
                        <td>${data.PHONE}</td>
                      </tr>
