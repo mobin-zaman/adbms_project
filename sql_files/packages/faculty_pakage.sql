@@ -3,6 +3,7 @@ CREATE OR REPLACE PACKAGE faculty_package AS
     PROCEDURE update_faculty(f_id in number, f_name in varchar2, f_email in varchar2, f_phone_number in varchar, did in number);
 END faculty_package;
 
+--TODO: add id validity check here as well
 
 CREATE OR REPLACE PACKAGE BODY faculty_package AS
     --test the procedure
@@ -33,9 +34,11 @@ CREATE OR REPLACE PACKAGE BODY faculty_package AS
     BEGIN
         if not (util.department_validity(did)) then
             raise_application_error(-20001, 'department id invalid');
-            end if;
 
-            if not (check_email_availabity(f_email)) then
+            elsif check_id_validity(f_id) then
+            raise_application_error(-20003,'faculty id already exists');
+
+            elsif not (check_email_availabity(f_email)) then
                 raise_application_error(-20002, 'faculty email already available');
 
             end if;

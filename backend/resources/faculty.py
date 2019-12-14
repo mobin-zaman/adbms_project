@@ -7,8 +7,7 @@ show particular teacher
 
 from flask_restful import Resource
 from flask import request  # needed for parsing POST requests
-from database.db import insert_faculty_procedure
-from database.db import search_faculty
+from database.faculty_methods import insert_faculty_procedure, search_faculty
 from database.db import select_many_query
 import json
 
