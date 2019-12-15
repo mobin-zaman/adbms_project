@@ -46,7 +46,7 @@ class FacultySearchByName(Resource):
     def get(self, name):
         result = search_faculty_by_name(name)
 
-        return result
+        return {'response':result}
 
 
 class FacultySearchByEmail(Resource):
