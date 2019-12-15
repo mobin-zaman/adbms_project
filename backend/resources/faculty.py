@@ -7,7 +7,7 @@ show particular teacher
 
 from flask_restful import Resource
 from flask import request  # needed for parsing POST requests
-from database.faculty_methods import insert_faculty_procedure, search_faculty
+from database.faculty_methods import *
 from database.db import select_query
 import json
 
@@ -44,6 +44,27 @@ class FacultySearchByName(Resource):
     """url: /faculty/search/<string:name>"""
 
     def get(self, name):
-        result = search_faculty(name)
+        result = search_faculty_by_name(name)
 
+        return result
+
+
+class FacultySearchByEmail(Resource):
+
+    def get(self, email):
+        result = search_faculty_by_email(email)
+        return result
+
+
+class FacultySearchByPhone(Resource):
+
+    def get(self, phone):
+        result = search_faculty_by_phone(phone)
+        return result
+
+
+class FacultySearchById(Resource):
+
+    def get(self, id):
+        result = search_faculty_by_id(id)
         return result

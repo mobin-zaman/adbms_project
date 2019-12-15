@@ -24,3 +24,5 @@ def search_student(name):
             'name': '%' + name + '%'})  # needed for capitalizing names, or else search doesn't work
         result = dict_mapper(cursor)
         return result
+
+

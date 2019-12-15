@@ -31,11 +31,44 @@ def update_faculty_procedure(id, name, email, phone_number, did):
             return error_message(error_obj.message)
 
 
-def search_faculty(name):
+def search_faculty_by_name(name):
     conn = get_connection()
 
     with conn.cursor() as cursor:
         cursor.execute('select * from faculty where upper(name) like upper(:name)', {
             'name': '%' + name + '%'})  # needed for capitalizing names, or else search doesn't work
         result = dict_mapper(cursor)
+        return result
+
+
+def search_faculty_by_email(email):
+    conn = get_connection()
+
+    with conn.cursor() as cursor:
+        cursor.execute('select * from faculty where upper(email) like upper(:email)', {
+            'email': '%' + email + '%'})
+        result = dict_mapper(cursor)
+
+        return result
+
+
+def search_faculty_by_phone(phone):
+    conn = get_connection()
+
+    with conn.cursor() as cursor:
+        cursor.execute('select * from faculty where upper(PHONE) like upper(:phone)', {
+            'phone': '%' + phone + '%'})
+
+        result = dict_mapper(cursor)
+
+        return result
+
+
+def search_faculty_by_id(id):
+    conn = get_connection()
+
+    with conn.cursor() as cursor:
+        cursor.execute('select * from faculty where id = :id', {'id': id})
+        result = dict_mapper(cursor)
+
         return result
