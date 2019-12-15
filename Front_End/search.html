@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1>Search Page</h1>
+<select id="searchOption">
+    <option selected="phone">phone</option>
+    <option selected="email">email</options>
+    <option selected="name">name</option>
+    <option selected="id">id</option>
+
+</select>
+<input id="searchInputBox" type="text">
+<button id="searchButton">Search</button>
+<ul id="searchResultOutput"></ul>
+
+</body>
+
+<script>
+    document.getElementById('searchButton').addEventListener('click', search);
+
+    function search() {
+        var e = document.getElementById('searchOption');
+        var option = e.options[e.selectedIndex].text;
+        console.log(option);
+        var searchString = document.getElementById("searchInputBox").value;
+
+        const baseUrl = "https://gifted-sea-25570.pktriot.net/faculty/search/"
+
+        let url = baseUrl + '/' + option + '/' + searchString + '/';
+
+        const header = {
+            Accept: 'application/json'
+        };
+
+        let fetchData = {
+            method: 'GET',
+            headers: header
+        };
+
+        fetch(url, fetchData).then(response => {
+            return response.json();
+        }).then(data => {
+            let toBodyHtml = ``;
+                let result = data.response;
+                result.forEach(key=>{
+                    tBodyHtml += `
+                       <li>ID: ${data.ID}</li>
+                       <li>Name: ${data.NAME}</li>
+                       <li>University: ${data.UNIVERSITY_NAME}</li>
+                       <li>Department: ${data.DEPT_NAME}</li>
+                       <li>Email: ${data.EMAIL}</li>
+                       <li>Phone: ${data.PHONE}</li>
+                    `
+                })
+                document.getElementById('searchResultOutput').innerHTML=toBodyHtml;
+            })
+    }
+</script>
+</html>

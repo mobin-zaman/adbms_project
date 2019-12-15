@@ -102,6 +102,8 @@
     <br>
     <button type="Submit" id="updatebtn">UPDATE</button>
     <br>
+    <button type="Search" id="searchButton">Search</button>
+    <br>
 </div>
 
 <div id="output" style="margin-top:50px;">
@@ -115,8 +117,12 @@
 
 <script>
     document.getElementById('listbtn').addEventListener('click', list);
+    document.getElementById('searchButton').addEventListener('click', searchPage);
 
 
+    function searchPage(){
+        window.location = ""
+    }
     function list() {
         const url = "https://gifted-sea-25570.pktriot.net/faculty/"; //FIXME: change the url to localhost
         const header = {
