@@ -25,7 +25,7 @@ def dict_mapper(cursor):
             for each_meta, row in zip(metas,row):
                 result_dict[each_meta[0]]=row
 
-        return result_dict
+        return [result_dict]
     else:
         result_list = []
         result_dict = {}

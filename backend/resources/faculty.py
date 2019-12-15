@@ -53,18 +53,18 @@ class FacultySearchByEmail(Resource):
 
     def get(self, email):
         result = search_faculty_by_email(email)
-        return result
+        return {'response':result}
 
 
 class FacultySearchByPhone(Resource):
 
     def get(self, phone):
         result = search_faculty_by_phone(phone)
-        return result
+        return {'response':result}
 
 
 class FacultySearchById(Resource):
 
     def get(self, id):
         result = search_faculty_by_id(id)
-        return result
+        return {'response':result}

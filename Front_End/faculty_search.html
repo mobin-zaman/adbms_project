@@ -44,20 +44,21 @@
         fetch(url, fetchData).then(response => {
             return response.json();
         }).then(data => {
-            let toBodyHtml = ``;
-                let result = data.response;
-                result.forEach(key=>{
-                    tBodyHtml += `
-                       <li>ID: ${data.ID}</li>
-                       <li>Name: ${data.NAME}</li>
-                       <li>University: ${data.UNIVERSITY_NAME}</li>
-                       <li>Department: ${data.DEPT_NAME}</li>
-                       <li>Email: ${data.EMAIL}</li>
-                       <li>Phone: ${data.PHONE}</li>
+            let tBodyHtml = ``;
+            console.log("data: ", data.response);
+            data.response.forEach(key => {
+                tBodyHtml += `
+                       <li>ID: ${key.ID}</li>
+                       <li>Name: ${key.NAME}</li>
+                       <li>Department: ${key.DEPT_ID}</li>
+                       <li>Email: ${key.EMAIL}</li>
+                       <li>Phone: ${key.PHONE}</li>
+                       <br>
                     `
-                })
-                document.getElementById('searchResultOutput').innerHTML=toBodyHtml;
-            })
+            });
+            document.getElementById('searchResultOutput').innerHTML = tBodyHtml;
+            console.log('done')
+        })
     }
 </script>
 </html>
