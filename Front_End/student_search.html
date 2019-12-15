@@ -5,7 +5,7 @@
     <title>Title</title>
 </head>
 <body>
-<h1>Faculty Search Page</h1>
+<h1>Student Search Page</h1>
 <select id="searchOption">
     <option selected="phone">phone</option>
     <option selected="email">email</options>
@@ -28,7 +28,7 @@
         console.log(option);
         var searchString = document.getElementById("searchInputBox").value;
 
-        const baseUrl = "https://gifted-sea-25570.pktriot.net/faculty/search/"
+        const baseUrl = "https://gifted-sea-25570.pktriot.net/student/search/"
 
         let url = baseUrl + '/' + option + '/' + searchString + '/';
 
@@ -62,7 +62,7 @@
                 window.alert(data.response.msg);
             }
             console.log('done')
-        });
+        })
     }
 </script>
 </html>
