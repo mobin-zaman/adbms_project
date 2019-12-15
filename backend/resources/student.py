@@ -33,6 +33,30 @@ class StudentInsertResource(Resource):
 
 
 class StudentSearchByName(Resource):
+    """url: /faculty/search/<string:name>"""
+
     def get(self, name):
-        result = search_student(name)
-        return result
+        result = search_student_by_name(name)
+
+        return {'response': result}
+
+
+class StudentSearchByEmail(Resource):
+
+    def get(self, email):
+        result = search_student_by_email(email)
+        return {'response': result}
+
+
+class StudentSearchByPhone(Resource):
+
+    def get(self, phone):
+        result = search_student_by_phone(phone)
+        return {'response': result}
+
+
+class StudentFacultySearchById(Resource):
+
+    def get(self, id):
+        result = search_student_by_id(id)
+        return {'response': result}

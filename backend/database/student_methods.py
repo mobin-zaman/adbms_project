@@ -16,7 +16,7 @@ def insert_student_procedure(id, name, email, phone_number, did, a_year):
             return error_message(error_obj.message)
 
 
-def search_student(name):
+def search_student_by_name(name):
     conn = get_connection()
 
     with conn.cursor() as cursor:
@@ -26,3 +26,34 @@ def search_student(name):
         return result
 
 
+def search_student_by_email(email):
+    conn = get_connection()
+
+    with conn.cursor() as cursor:
+        cursor.execute('select * from student where upper(email) like upper(:email)', {
+            'email': '%' + email + '%'})
+        result = dict_mapper(cursor)
+
+        return result
+
+
+def search_student_by_phone(phone):
+    conn = get_connection()
+
+    with conn.cursor() as cursor:
+        cursor.execute('select * from student where upper(PHONE) like upper(:phone)', {
+            'phone': '%' + phone + '%'})
+
+        result = dict_mapper(cursor)
+
+        return result
+
+
+def search_student_by_id(id):
+    conn = get_connection()
+
+    with conn.cursor() as cursor:
+        cursor.execute('select * from student where id = :id', {'id': id})
+        result = dict_mapper(cursor)
+
+        return result
