@@ -47,7 +47,7 @@ def search_faculty_by_email(email):
     with conn.cursor() as cursor:
         cursor.execute('select * from faculty where upper(email) like upper(:email)', {
             'email': '%' + email + '%'})
-  dd      result = dict_mapper(cursor)
+        result = dict_mapper(cursor)
 
         return result
 
