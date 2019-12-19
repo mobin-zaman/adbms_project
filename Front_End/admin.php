@@ -1,17 +1,17 @@
 <?php 
 if(isset($_POST['fid'])){
-  header("location:faculty.php");
+  header("location:faculty.html");
 
 }elseif(isset($_POST['sid'])){
 
 
-  header("location:student.php");
+  header("location:student.html");
 }elseif(isset($_POST['pid'])){
 
-  header("location:project.php");
+  header("location:project.html");
 }elseif (isset($_POST['tid'])) {
   
-  header("location:thesis.php");
+  header("location:thesis.html");
 }
 
  ?>
@@ -68,8 +68,6 @@ if(isset($_POST['fid'])){
     <button type="Submit" name="tid">Thesis</button>
     <br>
 </div>
-
-
 </form>
 </body>
 </html>

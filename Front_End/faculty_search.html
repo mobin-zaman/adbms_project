@@ -1,20 +1,64 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+    <style>
+        body {
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        form {
+            border: 3px solid #f1f1f1;
+        }
+        select {
+            width: 10%;
+            padding: 12px 20px;
+            margin: 8px 1px;
+            display: inline-block;
+            border: 1px solid #555;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+
+        input[type=text] {
+            width: 40%;
+            padding: 12px 20px;
+            margin: 8px 1px;
+            display: inline-block;
+            border: 2px solid #555;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+
+        button {
+            background-color: #4caf50;
+            color: white;
+            padding: 14px 20px;
+            margin: 8px 0;
+            border: none;
+            cursor: pointer;
+            width: 40%;
+        }
+
+        button:hover {
+            opacity: 0.8;
+        }
+
+
+    </style>
 </head>
 <body>
 <h1>Faculty Search Page</h1>
 <select id="searchOption">
     <option selected="phone">phone</option>
-    <option selected="email">email</options>
+    <option selected="email">email</option>
     <option selected="name">name</option>
     <option selected="id">id</option>
 
-</select>
-<input id="searchInputBox" type="text">
+</select> <br>
+<input id="searchInputBox" type="text"><br>
 <button id="searchButton">Search</button>
+<br>
 <ul id="searchResultOutput"></ul>
 
 </body>

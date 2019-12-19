@@ -1,62 +1,19 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1"/>
-    <style>
-        body {
-            font-family: Arial, Helvetica, sans-serif;
-        }
-
-        form {
-            border: 3px solid #f1f1f1;
-        }
-        select {
-            width: 10%;
-            padding: 12px 20px;
-            margin: 8px 1px;
-            display: inline-block;
-            border: 1px solid #555;
-            border-radius: 3px;
-            box-sizing: border-box;
-        }
-
-        input[type=text] {
-            width: 40%;
-            padding: 12px 20px;
-            margin: 8px 1px;
-            display: inline-block;
-            border: 2px solid #555;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-
-        button {
-            background-color: #4caf50;
-            color: white;
-            padding: 14px 20px;
-            margin: 8px 0;
-            border: none;
-            cursor: pointer;
-            width: 40%;
-        }
-
-        button:hover {
-            opacity: 0.8;
-        }
-
-
-    </style>
+    <meta charset="UTF-8">
+    <title>Title</title>
 </head>
 <body>
-<h1>Student Search Page</h1>
+<h1>Thesis Search Page</h1>
 <select id="searchOption">
     <option selected="phone">phone</option>
     <option selected="email">email</option>
     <option selected="name">name</option>
     <option selected="id">id</option>
 
-</select><br>
-<input id="searchInputBox" type="text"><br>
+</select>
+<input id="searchInputBox" type="text">
 <button id="searchButton">Search</button>
 <ul id="searchResultOutput"></ul>
 
@@ -71,7 +28,7 @@
         console.log(option);
         var searchString = document.getElementById("searchInputBox").value;
 
-        const baseUrl = "https://gifted-sea-25570.pktriot.net/student/search/"
+        const baseUrl = "https://gifted-sea-25570.pktriot.net/thesis/search/"
 
         let url = baseUrl + '/' + option + '/' + searchString + '/';
 
