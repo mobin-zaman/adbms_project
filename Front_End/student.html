@@ -129,7 +129,15 @@
     document.getElementById('listbtn').addEventListener('click', list);
     document.getElementById('searchButton').addEventListener('click', searchPage);
 
+    document.getElementById('insertbtn').addEventListener('click', insertPage);
+    document.getElementById('updatebtn').addEventListener('click', updatePage);
 
+    function updatePage() {
+        window.location = "student_update.html";
+    }
+    function insertPage() {
+        window.location = "student_insert.html";
+    }
     function searchPage() {
         window.location = "student_search.html";
     }

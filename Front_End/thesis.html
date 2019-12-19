@@ -116,7 +116,15 @@
 <script>
     document.getElementById('listbtn').addEventListener('click',list);
 
+    document.getElementById('insertbtn').addEventListener('click', insertPage);
+    document.getElementById('updatebtn').addEventListener('click', updatePage);
 
+    function updatePage() {
+        window.location = "thesis_update.html";
+    }
+    function insertPage() {
+        window.location = "thesis_insert.html";
+    }
     function list() {
         const url = "https://gifted-sea-25570.pktriot.net/thesis/"; //FIXME: change the url to localhost
         const header = {

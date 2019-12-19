@@ -118,7 +118,15 @@
 <script>
     document.getElementById('listbtn').addEventListener('click',list);
 
+    document.getElementById('insertbtn').addEventListener('click', insertPage);
+    document.getElementById('updatebtn').addEventListener('click', updatePage);
 
+    function updatePage() {
+        window.location = "project_update.html";
+    }
+    function insertPage() {
+        window.location = "project_insert.html";
+    }
      
 
     function list() {
