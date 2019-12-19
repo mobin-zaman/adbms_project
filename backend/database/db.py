@@ -22,8 +22,8 @@ def dict_mapper(cursor):
     if len(rows) == 1:
         result_dict = {}
         for row in rows:
-            for each_meta, row in zip(metas,row):
-                result_dict[each_meta[0]]=row
+            for each_meta, row in zip(metas, row):
+                result_dict[each_meta[0]] = row
 
         return [result_dict]
     else:
@@ -42,13 +42,13 @@ def dict_mapper(cursor):
         return result_list
 
 
-
 def select_query(sql):
     conn = get_connection()
     with conn.cursor() as cursor:
         result = cursor.execute(sql)
         result = dict_mapper(cursor)
     return result
+
 
 """
 def select_many_query(sql):
@@ -63,6 +63,7 @@ def select_many_query(sql):
 
 """
 
+
 def error_message(message):
     return message.split("\n")[0].split(":")[1]
 
@@ -72,3 +73,10 @@ def function_call(params_list):  # FIXME: need to change the name of the functio
     with conn.cursor() as cursor:
         function_return = cursor.callfunc('admin_login', int, params_list)
     return function_return
+
+
+def insert_query(sql):
+    conn = get_connection()
+    with conn.cursor() as cursor:
+        cursor.execute(sql)
+        conn.commit()

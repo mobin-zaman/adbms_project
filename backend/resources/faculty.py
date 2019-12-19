@@ -31,7 +31,7 @@ class FacultyInsertResource(Resource):
             phone_number = json_data['phone_number']
             dept_id = json_data['dept_id']
         except Exception:
-            return {'error': 'need all the data'}, 200
+            return {'error': 'need all the data'}, 400
 
         status = insert_faculty_procedure(id, name, email, phone_number, dept_id)
         if status == "success":
