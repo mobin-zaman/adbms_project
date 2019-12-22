@@ -18,6 +18,7 @@ api.add_resource(LoginResource, '/login/')
 
 api.add_resource(FacultyListResource, '/faculty/')
 api.add_resource(FacultyInsertResource, '/faculty/insert/')
+api.add_resource(FacultyUpdateResource, '/faculty/update/')
 api.add_resource(FacultySearchByName, '/faculty/search/name/<string:name>/')
 api.add_resource(FacultySearchById, '/faculty/search/id/<int:id>/')
 api.add_resource(FacultySearchByEmail, '/faculty/search/email/<string:email>/')

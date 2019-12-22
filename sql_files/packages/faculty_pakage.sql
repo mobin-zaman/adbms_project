@@ -53,9 +53,6 @@ CREATE OR REPLACE PACKAGE BODY faculty_package AS
         if not (util.DEPARTMENT_VALIDITY(did)) then
             raise_application_error(-20001, 'department id invalid');
 
-        elsif (check_id_validity(f_id)) then
-            raise_application_error(-20005, 'faculty id valid');
-
         elsif (check_email_availabity(f_email)) then
             raise_application_error(-20002, 'faculty email already available');
         end if;

@@ -14,7 +14,7 @@
         }
 
         input[type='text'],
-        input[type='password'],input[type='email'] {
+        input[type='password'], input[type='email'] {
             width: 50%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -22,6 +22,7 @@
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
+
         button {
             background-color: #4caf50;
             color: white;
@@ -41,19 +42,90 @@
 
 <h2 align="center" style="color: #0a3d62;font-weight: bold;">FACULTY UPDATE</h2>
 <div align="center">
-    <input type="text" id="id"  placeholder="Enter ID" required> <br>
+    <input type="text" id="id" placeholder="Enter ID" required>
+    <button id="getFaculty">get by id</button>
+    <br>
 
-    <input type="text" id="name"  placeholder="Enter Name" > <br>
+    <input type="text" id="name" placeholder="Enter Name"> <br>
 
-    <input type="text" id="university"  placeholder="Enter University " > <br>
+    <input type="text" id="deptId" placeholder="Enter Department ID "> <br>
 
-    <input type="text" id="deptid"  placeholder="Enter Department ID " > <br>
+    <input type="email" id="email" placeholder="Enter Email"> <br>
 
-    <input type="email" id="email"  placeholder="Enter Email" > <br>
-
-    <input type="text" id="phone"  placeholder="Enter Phone" > <br>
+    <input type="text" id="phone" placeholder="Enter Phone"> <br>
 
     <button id="insertButton">Update</button>
 </div>
 </body>
+<script>
+    document.getElementById('insertButton').addEventListener('click', function (e) {
+        var id = document.getElementById('id').value;
+        var name = document.getElementById('name').value;
+        var deptId = document.getElementById('deptId').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+
+        console.log(id);
+        console.log(name);
+        console.log(deptId);
+        console.log(email);
+        console.log(phone);
+
+        const user = {
+            id: id,
+            name: name,
+            dept_id: deptId,
+            email: email,
+            phone: phone
+        };
+
+        const header = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        }
+
+        console.log(JSON.stringify(user))
+        let fetchData = {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: header
+        };
+
+        let url = "https://gifted-sea-25570.pktriot.net/faculty/update/";
+
+        //FIXME: delete the last inserted faculties for testing purposes
+
+        fetch(url, fetchData).then(response => {
+            return response.json();
+        }).then(data => {
+            alert(data.msg);
+        });
+
+        e.preventDefault();
+    });
+    document.getElementById('getFaculty').addEventListener('click', function (e) {
+        var id = document.getElementById('id').value;
+        console.log("CLICKED");
+
+        let url = "https://gifted-sea-25570.pktriot.net/faculty/search/id/" + id + "/";
+
+        fetch(url).then(response => {
+            return response.json();
+        }).then(data => {
+            return data.response;
+        }).then(data => {
+            if(data[0].hasOwnProperty('msg')){
+                alert("no data found")
+            }
+            else {
+                document.getElementById('name').value=data[0].NAME;
+                document.getElementById('deptId').value=data[0].DEPT_ID;
+                document.getElementById('email').value=data[0].EMAIL;
+                document.getElementById('phone').value=data[0].PHONE;
+                // document.getElementById('phone').value=data[0].;
+            }
+        })
+    });
+
+</script>
 </html>
