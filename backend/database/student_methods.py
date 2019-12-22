@@ -16,6 +16,20 @@ def insert_student_procedure(id, name, email, phone_number, did, a_year):
             return error_message(error_obj.message)
 
 
+def update_student_procedure(id, name, email, phone, did, a_year):
+    conn = get_connection()
+    with conn.cursor() as cursor:
+        try:
+            cursor.callproc('student_package.update_student', [id, name, email, phone, did, a_year])
+            conn.commit()
+            return "success"
+        except DatabaseError as err:
+            error_obj, = err.args
+            print("error CODE: ", error_obj.code)
+            print("error MESSAGE: ", error_obj.message.split("\n")[0])
+            return error_message(error_obj.message)
+
+
 def search_student_by_name(name):
     conn = get_connection()
 

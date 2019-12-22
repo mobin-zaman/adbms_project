@@ -26,6 +26,7 @@ api.add_resource(FacultySearchByPhone, '/faculty/search/phone/<string:phone>/')
 
 api.add_resource(StudentListResource, '/student/')
 api.add_resource(StudentInsertResource, '/student/insert/')
+api.add_resource(StudentUpdateResource, '/student/update/')
 api.add_resource(StudentSearchByName, '/student/search/name/<string:name>/')  # providing trailing slash is must
 api.add_resource(StudentSearchByEmail, '/student/search/email/<string:email>/')
 api.add_resource(StudentSearchByPhone, '/student/search/phone/<string:phone>/')

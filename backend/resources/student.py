@@ -32,6 +32,27 @@ class StudentInsertResource(Resource):
             return {'error': status}, 422
 
 
+class StudentUpdateResource(Resource):
+    def post(self):
+        json_data = request.get_json()
+
+        try:
+            id = json_data['id']
+            name = json_data['name']
+            email = json_data['email']
+            phone_number = json_data['phone_number']
+            dept_id = json_data['dept_id']
+            a_year = json_data['admitted_year']
+        except(Exception):
+            return {'error': 'need all the data'}, 400
+
+        status = update_student_procedure(id, name, email, phone_number, dept_id, a_year)
+        if status == "success":
+            return {'msg': 'student update successful'}, 200
+        else:
+            return {'error': status}, 422
+
+
 class StudentSearchByName(Resource):
 
     def get(self, name):
