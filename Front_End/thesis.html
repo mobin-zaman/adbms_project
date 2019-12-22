@@ -101,6 +101,8 @@
     <br>
     <button type="Submit" id="updatebtn">UPDATE</button>
     <br>
+    <button type="Submit" id-"searchbtn">SEARCH</button>
+    <br>
 </div>
 
 <div id="output" style="margin-top:50px;" > 
@@ -118,12 +120,17 @@
 
     document.getElementById('insertbtn').addEventListener('click', insertPage);
     document.getElementById('updatebtn').addEventListener('click', updatePage);
+    document.getElementById('searchbtn').addEventListener('click', searchPage)
 
     function updatePage() {
         window.location = "thesis_update.html";
     }
     function insertPage() {
         window.location = "thesis_insert.html";
+    }
+
+    function searchPage(){
+        window.location = "thesis_search.html"
     }
     function list() {
         const url = "https://gifted-sea-25570.pktriot.net/thesis/"; //FIXME: change the url to localhost

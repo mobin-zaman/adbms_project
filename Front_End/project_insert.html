@@ -14,7 +14,7 @@
         }
 
         input[type='text'],
-        input[type='password'],input[type='email'] {
+        input[type='password'], input[type='email'] {
             width: 50%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -22,14 +22,16 @@
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
+
         input[type='textarea'] {
-             width: 50%;
-             padding: 40px 20px;
-             margin: 8px 0;
-             display: inline-block;
-             border: 1px solid #ccc;
-             box-sizing: border-box;
-         }
+            width: 50%;
+            padding: 40px 20px;
+            margin: 8px 0;
+            display: inline-block;
+            border: 1px solid #ccc;
+            box-sizing: border-box;
+        }
+
         button {
             background-color: #4caf50;
             color: white;
@@ -49,15 +51,55 @@
 
 <h2 align="center" style="color: #0a3d62;font-weight: bold;">PROJECT INSERT</h2>
 <div align="center">
-    <input type="text" id="id"  placeholder="Enter ID" required> <br>
 
-    <input type="text" id="name"  placeholder="Enter Name" required> <br>
+    <input type="text" id="name" placeholder="Enter Name" required> <br>
 
-    <input type="text" id="faculty"  placeholder="Enter Faculty Name" required> <br>
+    <input type="text" id="faculty" placeholder="Enter Faculty Name" required> <br>
 
-    <input type="textarea" id="description"  placeholder="Write Description " required> <br>
+    <input type="textarea" id="description" placeholder="Write Description " required> <br>
 
     <button id="insertButton">Insert</button>
 </div>
 </body>
-</html>
+<script>
+    document.getElementById('insertButton').addEventListener('click', function (e) {
+        var name = document.getElementById('name').value;
+        var description = document.getElementById('description').value;
+        var faculty = document.getElementById('faculty').value;
+
+        console.log(name);
+        console.log(description);
+        console.log(faculty);
+
+        const user = {
+            name: name,
+            description: description,
+            supervisor: faculty
+        };
+
+        const header = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        }
+
+        console.log(JSON.stringify(user)) //VARIABLE NAME NEEDS TO BE CHAGNED
+        let fetchData = {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: header
+        };
+
+        let url = "https://gifted-sea-25570.pktriot.net/project/insert/";
+
+        //FIXME: delete the last inserted faculties for testing purposes
+
+        fetch(url, fetchData).then(response => {
+            return response.json();
+        }).then(data => {
+            alert(data.msg);
+        });
+
+        e.preventDefault();
+    });
+    </script>
+    </html>

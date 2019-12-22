@@ -54,13 +54,10 @@ CREATE OR REPLACE PACKAGE BODY student_package AS
                              a_year in number) AS
     BEGIN
         if not util.DEPARTMENT_VALIDITY(did) THEN
-            raise_application_error(-26000, 'department id invalid');
-
-        elsif not check_email_validity(s_email) THEN
-            raise_application_error(-27000, 'email already exists');
+            raise_application_error(-20009, 'department id invalid');
 
         elsif not check_student_id(s_id) THEN
-            raise_application_error(-28000, 'student id does not exist');
+            raise_application_error(-20006, 'student id does not exist');
 
         end if;
 

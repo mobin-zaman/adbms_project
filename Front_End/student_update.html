@@ -14,7 +14,7 @@
         }
 
         input[type='text'],
-        input[type='password'],input[type='email'] {
+        input[type='password'], input[type='email'] {
             width: 50%;
             padding: 12px 20px;
             margin: 8px 0;
@@ -22,6 +22,7 @@
             border: 1px solid #ccc;
             box-sizing: border-box;
         }
+
         button {
             background-color: #4caf50;
             color: white;
@@ -41,21 +42,102 @@
 
 <h2 align="center" style="color: #0a3d62;font-weight: bold;">STUDENT UPDATE</h2>
 <div align="center">
-    <input type="text" id="id"  placeholder="Enter ID" required> <br>
+    <input type="text" id="id" placeholder="Enter ID" required>
+    <button id="getStudent">get by id</button>
+    <br>
 
-    <input type="text" id="name"  placeholder="Enter Name" > <br>
+    <input type="text" id="name" placeholder="Enter Name"> <br>
 
-    <input type="text" id="text"  placeholder="Enter University " > <br>
+    <input type="text" id="deptId" placeholder="Enter Department ID"> <br>
 
-    <input type="text" id="deptid"  placeholder="Enter Department ID" > <br>
+    <input type="email" id="email" placeholder="Enter Email"> <br>
 
-    <input type="email" id="email"  placeholder="Enter Email" > <br>
+    <input type="text" id="phone" placeholder="Enter Phone"> <br>
 
-    <input type="text" id="phone"  placeholder="Enter Phone" > <br>
-
-    <input type="text" id="admittedyear"  placeholder="Enter Admitted Year" > <br>
+    <input type="text" id="admittedYear" placeholder="Enter Admitted Year"> <br>
 
     <button id="insertButton">Update</button>
 </div>
 </body>
+<script>
+    document.getElementById('insertButton').addEventListener('click', function (e) {
+        var id = document.getElementById('id').value;
+        var name = document.getElementById('name').value;
+        var deptId = document.getElementById('deptId').value;
+        var email = document.getElementById('email').value;
+        var phone = document.getElementById('phone').value;
+        var a_year = document.getElementById('admittedYear').value;
+
+        console.log(id);
+        console.log(name);
+        console.log(deptId);
+        console.log(email);
+        console.log(phone);
+        console.log(a_year);
+
+        const user = {
+            id: id,
+            name: name,
+            dept_id: deptId,
+            email: email,
+            phone_number: phone,
+            admitted_year: a_year
+        };
+
+        const header = {
+            Accept: 'application/json',
+            'Content-Type': 'application/json'
+        };
+
+        console.log(JSON.stringify(user));
+
+        let fetchData = {
+            method: 'POST',
+            body: JSON.stringify(user),
+            headers: header
+        };
+
+        let url = "https://gifted-sea-25570.pktriot.net/student/update/";
+
+        //FIXME: delete the last inserted faculties for testing purposes
+
+        fetch(url, fetchData).then(response => {
+            return response.json();
+        }).then(data => {
+        	console.log(data);
+        	if(data.hasOwnProperty('msg')) {
+                alert(data.msg);
+            } else {
+        	    alert(data.error);
+            }
+        });
+
+        e.preventDefault();
+    });
+
+    document.getElementById('getStudent').addEventListener('click', function (e) {
+        var id = document.getElementById('id').value;
+        console.log("CLICKED");
+
+        let url = "https://gifted-sea-25570.pktriot.net/student/search/id/" + id + "/";
+
+        fetch(url).then(response => {
+            return response.json();
+        }).then(data => {
+            return data.response;
+        }).then(data => {
+            if (data.hasOwnProperty('msg')) {
+                alert("no result found");
+            } else {
+                console.log(data);
+                document.getElementById('name').value = data[0].NAME;
+                document.getElementById('deptId').value = data[0].DEPT_ID;
+                document.getElementById('email').value = data[0].EMAIL;
+                document.getElementById('phone').value = data[0].PHONE;
+                document.getElementById('admittedYear').value = data[0].ADMITTED_YEAR;
+            }
+        });
+    });
+
+</script>
 </html>
