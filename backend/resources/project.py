@@ -2,6 +2,7 @@ from flask_restful import Resource
 from database.db import select_query
 from flask import request
 from database.db import select_query, insert_query
+from database.project_methods import search_project_by_id, search_project_by_name
 
 
 class ProjectListResource(Resource):
@@ -53,3 +54,24 @@ class ProjectInsertResource(Resource):
         insert_query(sql)
 
         return {'msg': 'project inserted'}, 200
+
+
+class ProjectSearchByName(Resource):
+    """url: /faculty/search/<string:name>"""
+
+    def get(self, name):
+        result = search_project_by_name(name)
+
+        print(result)
+
+        return {'response': result}
+
+
+class ProjectSearchById(Resource):
+
+    def get(self, id):
+        result = search_project_by_id(id)
+
+        print(result)
+
+        return {'response': result}

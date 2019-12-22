@@ -32,10 +32,13 @@ api.add_resource(StudentSearchByEmail, '/student/search/email/<string:email>/')
 api.add_resource(StudentSearchByPhone, '/student/search/phone/<string:phone>/')
 api.add_resource(StudentSearchById,'/student/search/id/<int:id>/')
 
-api.add_resource(ThesisListResource, '/thesis/')
 api.add_resource(ProjectListResource, '/project/')
 api.add_resource(ProjectInsertResource, '/project/insert/')
+api.add_resource(ProjectSearchByName, '/project/search/name/<string:name>/')
+api.add_resource(ProjectSearchById, '/project/search/id/<int:id>/')
 
+api.add_resource(ThesisListResource, '/thesis/')
+api.add_resource(ThesisInsertResource, '/thesis/insert/')
 
 @app.route('/shut_down_now/', methods=['GET'])
 def shutdown():
