@@ -47,7 +47,6 @@ select * from project;
 
 --insertion successful, the trigger working fine
 
-drop table thesis cascade constraints ;
 CREATE TABLE thesis (
         id NUMBER(10) NOT NULL,
         name VARCHAR2(255) NOT NULL,

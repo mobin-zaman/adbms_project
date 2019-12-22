@@ -23,21 +23,23 @@ class FacultyInsertResource(Resource):
 
     def post(self):
         json_data = request.get_json()
+        print(json_data)
 
         try:
             id = json_data['id']
             name = json_data['name']
             email = json_data['email']
-            phone_number = json_data['phone_number']
+            phone_number = json_data['phone']
             dept_id = json_data['dept_id']
         except Exception:
-            return {'error': 'need all the data'}, 400
+            print('exception')
+            return {'msg': 'need all the data'}, 400
 
         status = insert_faculty_procedure(id, name, email, phone_number, dept_id)
         if status == "success":
             return {'msg': 'faculty insertion successful'}, 200
         else:
-            return {'error': status}, 422
+            return {'msg': status}, 422
 
 
 class FacultySearchByName(Resource):
